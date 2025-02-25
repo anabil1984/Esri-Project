@@ -4,7 +4,7 @@ import { useMap } from "../hooks/useMap";
 import { FeatureTable } from "./FeatureTable";
 
 export const ArcGISMap: React.FC = () => {
-  const { mapRef, view, coords, bufferFeatures, zoomToFeature } = useMap();
+  const { mapRef, coords, bufferFeatures, zoomToFeature } = useMap();
 
   return (
     <div style={{ position: "relative" }}>

@@ -28,15 +28,17 @@ export const useMap = () => {
       zoom: 4,
     });
 
+
+    
     mapView.when(() => {
       setView(mapView);
       initializeWidgets(mapView);
       layersRef.current = createLayers();
       map.addMany(layersRef.current);
-
       const layerListWidget = new LayerList({ view: mapView });
       mapView.ui.add(layerListWidget, "top-right");
 
+      // Click event and Buffer 
       mapView.on("click", async (event) => {
         const point = event.mapPoint;
         setCoords({ lat: point.latitude, lon: point.longitude });
@@ -79,20 +81,19 @@ export const useMap = () => {
 
     // Zoom to the feature
     view.goTo(feature.geometry);
-
+    console.log("Zooming to feature geometry:", feature.geometry);
     // Highlight the point feature using SimpleMarkerSymbol
     const highlightGraphic = new Graphic({
       geometry: feature.geometry,
       symbol: new SimpleMarkerSymbol({
         color: "green", 
-        size: "12px",
+        size: "20",
         outline: {
           color: "white",
           width: 1,
         },
       }),
     });
-
     // Clear previous highlights and add the new one
     view.graphics.removeAll();
     view.graphics.add(highlightGraphic);
