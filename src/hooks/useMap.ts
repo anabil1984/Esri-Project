@@ -81,7 +81,6 @@ export const useMap = () => {
 
     // Zoom to the feature
     view.goTo(feature.geometry);
-    console.log("Zooming to feature geometry:", feature.geometry);
     // Highlight the point feature using SimpleMarkerSymbol
     const highlightGraphic = new Graphic({
       geometry: feature.geometry,
